@@ -1,0 +1,2 @@
+graft converter/templates
+global-exclude *.pyc
