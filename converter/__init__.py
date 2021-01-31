@@ -6,7 +6,9 @@ endpoint = f"https://api.wolframalpha.com/v1/result?appid={WOLFRAM_APP_ID}"
 
 
 def format_question(string):
-    return string.strip(" ?&/")
+    question = " ".join(string.split())
+    question = question.strip(" ?&/\\")
+    return question.replace(" ", "+")
 
 
 def create_app():
