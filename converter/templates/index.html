@@ -9,10 +9,26 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="bg-gray-800 w-full min-h-screen flex flex-col items-center justify-center space-y-6">
-        <p class="text-2xl text-white">Enter a conversion question below!</p>
-        <input class="w-72 py-2 text-xl border-2 border-green-300 rounded-md bg-gray-700 text-white pl-2" />
-        <button type="submit" class="bg-green-500 px-8 py-4 rounded-md text-xl text-white transform ease-in-out duration-500 hover:scale-110 hover:bg-green-400">Submit</button>
+    <div class="bg-gray-800 w-full relative min-h-screen flex flex-col items-center justify-center space-y-6">
+        <p class="text-2xl text-white">Enter a conversion question below</p>
+        <form class="flex flex-col w-full items-center justify-center space-y-6" method="POST" action="/">
+            <input name="question" class="w-72 py-2 text-xl border-2 border-green-300 rounded-md bg-gray-700 text-white pl-2" />
+            <button type="submit" class="bg-green-500 px-8 py-4 rounded-md text-xl text-white hover:bg-green-400">Submit</button>
+        </form>
+        {% if answer %}
+            <div id="modal" class="w-96 h-64 z-20 absolute bg-gray-600 p-4 overflow-y-scroll flex items-center justify-center">
+                <div class="w-full h-full relative flex items-center justify-center overflow-y-scroll">
+                    <button onClick="closeModal();" class="absolute top-0 right-0 px-4 py-2 rounded-md text-white bg-red-500 hover:bg-red-400">Close</button>
+                    <p class="text-2xl text-white mt-4">{{answer}}</p>
+                </div>
+            </div>
+        {% endif %}
     </div>
+
+    <script>
+        function closeModal() {
+            document.getElementById("modal").style.display="none"
+        }
+    </script>
 </body>
 </html>
