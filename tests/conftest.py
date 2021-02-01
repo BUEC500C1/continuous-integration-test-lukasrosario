@@ -1,6 +1,7 @@
 import pytest
 
-from converter import create_app, format_question
+from converter import create_app
+
 
 @pytest.fixture
 def app():

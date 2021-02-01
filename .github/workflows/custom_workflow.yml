@@ -30,7 +30,7 @@ jobs:
         env:
           WOLFRAM_APP_ID: ${{ secrets.WOLFRAM_APP_ID }}
         run: |
-          coverage run -m pytest
+          python3 -m coverage run -m pytest
       - name: Show coverage report
         run: |
           coverage report -m

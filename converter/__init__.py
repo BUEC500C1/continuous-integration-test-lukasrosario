@@ -20,6 +20,10 @@ def create_app():
     @app.route("/", methods=["GET", "POST"])
     def index():
         if request.method == "POST":
+            if request.headers["Content-Type"] == "application/json":
+                question = format_question(request.json["question"])
+                answer = requests.get(endpoint + question).text
+                return answer
             question = format_question(request.form["question"])
             answer = requests.get(endpoint + question).text
             return render_template("index.html", answer=answer)
